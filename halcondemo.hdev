@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<hdevelop file_version="1.2" halcon_version="19.11.0.0">
+<procedure name="main">
+<interface/>
+<body>
+<c as_id="matching" as_name="Matching 01" as_grp="[0]" as_ord="1">* </c>
+<c as_id="matching" as_name="Matching 01" as_grp="[0]" as_ord="2">* Matching 01: ************************************************</c>
+<c as_id="matching" as_name="Matching 01" as_grp="[0]" as_ord="3">* Matching 01: BEGIN of generated code for model initialization</c>
+<c as_id="matching" as_name="Matching 01" as_grp="[0]" as_ord="4">* Matching 01: ************************************************</c>
+<l as_id="matching" as_name="Matching 01" as_grp="[0]" as_ord="5">set_system ('border_shape_models', 'false')</l>
+<c as_id="matching" as_name="Matching 01" as_grp="[0]" as_ord="6">* </c>
+<c as_id="matching" as_name="Matching 01" as_grp="[1,1,1]" as_ord="1">* Matching 01: Obtain the model image</c>
+<l as_id="matching" as_name="Matching 01" as_grp="[1,1,1]" as_ord="2">read_image (Image, 'C:/Users/Administrator/MVS/Data/Image_20241025133048360.bmp')</l>
+<c as_id="matching" as_name="Matching 01" as_grp="[1,1,2]" as_ord="1">* </c>
+<c as_id="matching" as_name="Matching 01" as_grp="[1,1,2]" as_ord="2">* Matching 01: Build the ROI from basic regions</c>
+<l as_id="matching" as_name="Matching 01" as_grp="[1,1,2]" as_ord="3">gen_circle (ModelRegion, 502.5, 650.5, 322.155)</l>
+<l as_id="matching" as_name="Matching 01" as_grp="[1,1,2]" as_ord="4">gen_ellipse (_TmpRegion, 515.37, 682.507, rad(-60.5745), 63.3489, 67.959)</l>
+<l as_id="matching" as_name="Matching 01" as_grp="[1,1,2]" as_ord="5">difference (ModelRegion, _TmpRegion, ModelRegion)</l>
+<l as_id="matching" as_name="Matching 01" as_grp="[1,1,2]" as_ord="6">gen_region_runs (_TmpRegion, [140,141,142,143,144,145,146,147,148,149,150,151,152,153,154,155,156,157,158,159,160,161,162,163,164,165,166,167,168,169,170,171,172,173,174,175,176,177,178,179,180,181,182,183,184,185,186,187,188,189,190,191,192,193,193,194,194,195,195,196,196,197,197,198,198,199,199,200,200,201,201,202,202,203,203,204,204,205,205,206,206,207,208,209,210,211,212,213,214,215,216,217,218,219,220,221,222,223,224,225,226,227,228,229,230,231,232,233,234,235,236,237,238,239,240,241,242,243,244,245,246,247,248,249,250,251,251,252,252,253,253,254,254,255,255,256,256,257,257,257,258,258,258,259,259,259,260,260,260,261,261,261,262,262,262,263,263,264,264,265,265,266,266,267,267,268,268,269,269,270,270,271,271,272,272,273,273,274,274,275,275,276,276,277,277,278,278,279,279,280,280,281,281,282,282,283,283,284,284,285,285,286,286,287,287,288,288,289,289,290,290,291,291,292,292,293,293,294,294,295,295,296,296,297,297,298,298,299,299,300,300,301,301,302,302,303,303,304,304,305,305,306,307,308], [597,586,580,574,569,564,559,553,547,540,534,529,524,519,511,505,499,493,487,481,476,471,466,461,455,450,446,442,438,434,430,423,416,413,410,407,403,398,395,393,388,386,385,385,385,385,386,386,391,396,396,396,392,393,399,393,399,394,403,394,403,395,403,396,405,396,406,396,407,396,408,396,409,396,409,396,410,396,412,396,414,416,417,417,418,419,421,423,424,425,426,428,429,430,433,433,434,435,437,439,441,443,443,444,446,450,450,451,452,453,456,457,457,457,457,458,458,458,458,458,459,460,460,460,460,460,586,458,590,458,605,458,634,458,634,458,661,458,667,731,458,672,733,458,676,734,458,681,736,458,685,737,458,687,739,458,741,458,743,458,744,458,746,458,752,458,754,458,754,458,759,460,764,460,764,461,770,463,776,465,779,466,780,467,784,468,789,470,790,471,792,473,794,475,799,477,801,478,803,482,805,483,807,484,810,487,813,487,815,491,819,494,827,495,829,495,831,497,838,498,846,498,848,499,850,500,856,501,861,501,863,502,867,505,871,505,873,505,881,507,889,510,512,514], [668,682,684,690,704,709,717,724,727,730,734,737,741,746,754,756,759,762,765,769,772,774,777,779,782,785,789,793,796,800,803,805,808,810,813,816,818,821,824,826,828,830,832,834,836,838,840,842,843,845,847,849,850,396,852,396,854,396,856,396,858,396,860,396,862,396,863,396,864,396,866,396,867,396,868,396,869,396,870,396,872,873,874,875,876,878,879,880,881,882,884,885,886,887,888,889,890,891,892,893,894,895,895,896,897,897,898,899,901,902,903,904,905,905,906,906,907,907,907,907,907,907,907,907,907,562,907,560,907,556,907,551,907,550,907,549,907,547,718,907,544,710,907,543,709,907,543,703,907,542,701,907,542,699,907,542,907,541,907,541,907,540,907,540,907,539,907,539,907,538,907,538,906,537,906,537,906,537,906,536,905,536,905,536,905,535,905,535,904,535,904,534,904,534,904,533,904,533,904,533,904,532,903,532,903,531,903,531,903,531,903,530,903,530,903,530,902,530,902,529,901,529,901,529,900,528,900,528,899,527,899,527,898,526,898,526,897,526,897,526,896,525,525,524])</l>
+<l as_id="matching" as_name="Matching 01" as_grp="[1,1,2]" as_ord="7">difference (ModelRegion, _TmpRegion, ModelRegion)</l>
+<l as_id="matching" as_name="Matching 01" as_grp="[1,1,2]" as_ord="8">gen_region_runs (_TmpRegion, [198,199,200,201,202,203,204,205,206,207,208,209,210,211,212,213,214,215,216,217,218,219,220,221,222,223,224,225,226,227,228,229,230,231,232,233,234,235,236,237,238,239,240,241,242,243,244,245,246,247,248,249,250,251,252,253,254,255,256,257,258,259,260,261,262,263,264,265,266,267,268,269,270,271,272,273,274,275,276,277,278,279,280,281,282,283,284,285,286,287,288,289,290,291,292,293,294,295,296,297,298,299,300,301,302,303,304,305], [556,553,553,553,551,551,550,550,550,549,549,548,548,548,548,547,547,547,547,553,552,552,551,550,549,548,548,548,547,547,546,545,544,544,544,544,544,543,543,541,541,540,539,539,539,538,537,537,536,534,533,532,531,531,530,530,530,529,529,527,527,526,526,526,525,524,524,524,524,524,523,523,523,523,523,523,523,523,523,523,523,523,523,523,524,524,524,525,526,526,529,531,531,536,540,542,544,547,549,550,554,557,558,562,564,571,571,575], [582,596,605,609,626,636,638,645,658,660,663,667,671,675,681,688,694,699,705,709,712,715,717,719,720,722,724,727,731,733,735,737,738,740,741,743,745,746,746,747,747,748,749,750,751,752,753,753,754,754,754,754,754,754,754,754,754,753,753,752,752,752,751,751,751,750,750,749,749,749,748,748,747,744,744,743,742,741,741,740,739,738,738,737,736,735,734,733,731,730,728,726,724,721,716,705,702,699,692,690,678,624,622,620,611,605,604,597])</l>
+<l as_id="matching" as_name="Matching 01" as_grp="[1,1,2]" as_ord="9">difference (ModelRegion, _TmpRegion, ModelRegion)</l>
+<l as_id="matching" as_name="Matching 01" as_grp="[1,1,2]" as_ord="10">gen_region_runs (_TmpRegion, [213,214,215,216,217,218,219,220,221,222,223,224,225,226,227,228,229,230,231,232,233,234,235,236,237,238,239,240,241,242,243,244,245,246,247,248,249,250,251,252,252,253,253,254,254,255,255,256,256,257,257,258,258,259,259,260,260,261,261,262,262,263,263,264,264,265,265,266,266,267,267,268,268,269,269,270,270,271,271,272,272,273,273,274,274,275,275,276,276,277,277,278,278,279,279,280,280,281,281,282,282,283,283,284,284,285,285,286,286,286,287,287,287,288,288,288,289,289,289,290,290,290,291,291,291,292,292,292,293,293,293,294,294,294,295,295,295,296,296,296,297,297,297,298,298,298,299,299,299,300,300,300,301,301,301,302,302,302,303,303,304,304,305,305,306,306,307,307,308,308,309,309,310,311,312,313,314,315,316,317,318,319,320,321,322,323,324,325,326,327,328,329,330,331,332,333,334,335,336,337,338], [491,486,479,466,458,455,451,448,444,440,437,435,432,429,427,425,423,422,421,419,417,415,414,414,413,411,410,409,408,407,407,406,405,404,403,402,401,401,400,400,499,399,500,399,501,399,501,399,502,399,503,399,504,398,504,397,505,397,506,397,506,397,507,397,508,397,510,397,511,397,512,397,512,397,513,397,513,397,514,397,515,397,516,397,517,397,518,397,518,397,519,397,520,398,522,399,522,399,522,399,523,400,523,400,524,401,524,402,526,775,402,527,775,403,527,776,404,528,777,404,530,779,406,530,781,408,530,783,409,531,786,411,533,786,413,533,788,417,534,789,417,534,789,420,536,793,421,538,796,421,538,797,423,539,800,425,539,804,425,540,425,541,427,542,428,544,428,544,430,544,435,544,547,547,547,548,548,549,551,552,553,554,555,556,557,559,560,560,562,563,563,566,567,567,569,573,578,580,587,597,600], [556,560,574,590,597,601,617,623,627,633,639,643,650,656,660,664,672,680,683,687,694,703,708,714,719,723,727,732,737,742,746,749,753,760,764,768,772,776,779,497,783,496,786,496,789,496,793,496,797,495,802,495,806,494,808,492,810,492,813,492,815,492,817,491,819,490,821,489,823,489,825,489,827,488,828,488,830,488,831,488,833,488,835,488,836,488,837,488,837,488,838,488,839,487,841,487,842,486,843,486,843,485,843,485,844,485,844,485,770,844,485,769,844,485,767,845,484,763,845,484,760,846,483,758,846,482,756,846,482,754,846,482,753,846,481,751,845,481,748,842,481,748,841,480,747,839,479,745,836,477,743,834,476,741,830,475,739,823,474,734,472,732,471,731,469,731,467,730,463,725,458,722,718,716,714,713,711,706,702,699,697,691,686,684,682,676,674,671,664,658,656,652,649,647,640,635,629,627,621,618,616])</l>
+<l as_id="matching" as_name="Matching 01" as_grp="[1,1,2]" as_ord="11">difference (ModelRegion, _TmpRegion, ModelRegion)</l>
+<c as_id="matching" as_name="Matching 01" as_grp="[1,1,3]" as_ord="1">* </c>
+<c as_id="matching" as_name="Matching 01" as_grp="[1,1,3]" as_ord="2">* Matching 01: Reduce the model template</c>
+<l as_id="matching" as_name="Matching 01" as_grp="[1,1,3]" as_ord="3">reduce_domain (Image, ModelRegion, TemplateImage)</l>
+<c as_id="matching" as_name="Matching 01" as_grp="[1,1,4]" as_ord="1">* </c>
+<c as_id="matching" as_name="Matching 01" as_grp="[1,1,4]" as_ord="2">* Matching 01: Create the shape model</c>
+<l as_id="matching" as_name="Matching 01" as_grp="[1,1,4]" as_ord="3">create_shape_model (TemplateImage, 7, rad(0), rad(360), rad(0.3366), ['point_reduction_low','no_pregeneration'], 'use_polarity', [39,51,6], 3, ModelID)</l>
+<c as_id="matching" as_name="Matching 01" as_grp="[1,2]" as_ord="1">* </c>
+<c as_id="matching" as_name="Matching 01" as_grp="[1,2]" as_ord="2">* Matching 01: Get the model contour for transforming it later into the image</c>
+<l as_id="matching" as_name="Matching 01" as_grp="[1,2]" as_ord="3">get_shape_model_contours (ModelContours, ModelID, 1)</l>
+<c as_id="matching" as_name="Matching 01" as_grp="[1,5]" as_ord="1">* </c>
+<c as_id="matching" as_name="Matching 01" as_grp="[1,5]" as_ord="2">* Matching 01: Get the reference position</c>
+<l as_id="matching" as_name="Matching 01" as_grp="[1,5]" as_ord="3">area_center (ModelRegion, ModelRegionArea, RefRow, RefColumn)</l>
+<l as_id="matching" as_name="Matching 01" as_grp="[1,5]" as_ord="4">vector_angle_to_rigid (0, 0, 0, RefRow, RefColumn, 0, HomMat2D)</l>
+<l as_id="matching" as_name="Matching 01" as_grp="[1,5]" as_ord="5">affine_trans_contour_xld (ModelContours, TransContours, HomMat2D)</l>
+<l>write_shape_model(ModelID, 'D:/sourcecode/NASGit/tianchang_socket/outsideshape.shm')</l>
+<c as_id="matching" as_name="Matching 01" as_grp="[1,5]" as_ord="6">* </c>
+<c as_id="matching" as_name="Matching 01" as_grp="[1,5]" as_ord="7">* Matching 01: Display the model contours</c>
+<l as_id="matching" as_name="Matching 01" as_grp="[1,5]" as_ord="8">dev_display (Image)</l>
+<l as_id="matching" as_name="Matching 01" as_grp="[1,5]" as_ord="9">dev_set_color ('green')</l>
+<l as_id="matching" as_name="Matching 01" as_grp="[1,5]" as_ord="10">dev_set_draw ('margin')</l>
+<l as_id="matching" as_name="Matching 01" as_grp="[1,5]" as_ord="11">dev_display (ModelRegion)</l>
+<l as_id="matching" as_name="Matching 01" as_grp="[1,5]" as_ord="12">dev_display (TransContours)</l>
+<l as_id="matching" as_name="Matching 01" as_grp="[1,5]" as_ord="13">stop ()</l>
+<c as_id="matching" as_name="Matching 01" as_grp="[2]" as_ord="1">* </c>
+<c as_id="matching" as_name="Matching 01" as_grp="[2]" as_ord="2">* Matching 01: END of generated code for model initialization</c>
+<c as_id="matching" as_name="Matching 01" as_grp="[3,1]" as_ord="1">* Matching 01:  * * * * * * * * * * * * * * * * * * * * * * *</c>
+<c as_id="matching" as_name="Matching 01" as_grp="[3,1]" as_ord="2">* Matching 01: BEGIN of generated code for model application</c>
+<c as_id="matching" as_name="Matching 01" as_grp="[4]" as_ord="1">* </c>
+<c as_id="matching" as_name="Matching 01" as_grp="[4]" as_ord="2">* Matching 01: Loop over all specified test images</c>
+<l as_id="matching" as_name="Matching 01" as_grp="[4]" as_ord="3">TestImages := ['C:/Users/Administrator/MVS/Data/Image_20241018170713213.bmp','C:/Users/Administrator/MVS/Data/Image_20241018170732554.bmp','C:/Users/Administrator/MVS/Data/Image_20241018170740877.bmp','C:/Users/Administrator/MVS/Data/Image_20241018170743808.bmp','C:/Users/Administrator/MVS/Data/Image_20241018170747967.bmp','C:/Users/Administrator/MVS/Data/Image_20241018170750343.bmp','C:/Users/Administrator/MVS/Data/Image_20241018170752626.bmp','C:/Users/Administrator/MVS/Data/Image_20241018170755710.bmp','C:/Users/Administrator/MVS/Data/Image_20241018170758271.bmp','C:/Users/Administrator/MVS/Data/Image_20241018170800464.bmp','C:/Users/Administrator/MVS/Data/Image_20241018170805658.bmp']</l>
+<l as_id="matching" as_name="Matching 01" as_grp="[4]" as_ord="4">for T := 0 to 10 by 1</l>
+<c as_id="matching" as_name="Matching 01" as_grp="[5]" as_ord="1">    * </c>
+<c as_id="matching" as_name="Matching 01" as_grp="[5]" as_ord="2">    * Matching 01: Obtain the test image</c>
+<l as_id="matching" as_name="Matching 01" as_grp="[5]" as_ord="3">    read_image (Image, TestImages[T])</l>
+<c as_id="matching" as_name="Matching 01" as_grp="[6]" as_ord="1">    * </c>
+<c as_id="matching" as_name="Matching 01" as_grp="[6]" as_ord="2">    * Matching 01: Find the model</c>
+<l as_id="matching" as_name="Matching 01" as_grp="[6]" as_ord="3">    find_shape_model (Image, ModelID, rad(0), rad(360), 0.4, 1, 0.5, 'least_squares', [7,1], 0.75, Row, Column, Angle, Score)</l>
+<c as_id="matching" as_name="Matching 01" as_grp="[7,1]" as_ord="1">    * </c>
+<c as_id="matching" as_name="Matching 01" as_grp="[7,1]" as_ord="2">    * Matching 01: Transform the model contours into the detected positions</c>
+<l as_id="matching" as_name="Matching 01" as_grp="[7,1]" as_ord="3">    dev_display (Image)</l>
+<l as_id="matching" as_name="Matching 01" as_grp="[7,2]" as_ord="1">    for I := 0 to |Score| - 1 by 1</l>
+<l as_id="matching" as_name="Matching 01" as_grp="[7,3]" as_ord="1">        hom_mat2d_identity (HomMat2D)</l>
+<l as_id="matching" as_name="Matching 01" as_grp="[7,5]" as_ord="1">        hom_mat2d_rotate (HomMat2D, Angle[I], 0, 0, HomMat2D)</l>
+<l as_id="matching" as_name="Matching 01" as_grp="[7,5]" as_ord="2">        hom_mat2d_translate (HomMat2D, Row[I], Column[I], HomMat2D)</l>
+<l as_id="matching" as_name="Matching 01" as_grp="[7,5]" as_ord="3">        affine_trans_contour_xld (ModelContours, TransContours, HomMat2D)</l>
+<l as_id="matching" as_name="Matching 01" as_grp="[7,6]" as_ord="1">        dev_set_color ('green')</l>
+<l as_id="matching" as_name="Matching 01" as_grp="[7,6]" as_ord="2">        dev_display (TransContours)</l>
+<l as_id="matching" as_name="Matching 01" as_grp="[7,6]" as_ord="3">        stop ()</l>
+<l as_id="matching" as_name="Matching 01" as_grp="[7,7]" as_ord="1">    endfor</l>
+<l as_id="matching" as_name="Matching 01" as_grp="[10]" as_ord="1">endfor</l>
+<c as_id="matching" as_name="Matching 01" as_grp="[11]" as_ord="1">* </c>
+<c as_id="matching" as_name="Matching 01" as_grp="[12]" as_ord="1">* Matching 01: *******************************************</c>
+<c as_id="matching" as_name="Matching 01" as_grp="[12]" as_ord="2">* Matching 01: END of generated code for model application</c>
+<c as_id="matching" as_name="Matching 01" as_grp="[12]" as_ord="3">* Matching 01: *******************************************</c>
+<c as_id="matching" as_name="Matching 01" as_grp="[12]" as_ord="4">* </c>
+</body>
+<docu id="main">
+<parameters/>
+</docu>
+</procedure>
+</hdevelop>
