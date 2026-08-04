@@ -8,3 +8,6 @@ venv/
 *.rgb565
 *.bmp
 captured_images/
+*.ncm
+TestPic/
+moudlepic/
