@@ -517,7 +517,6 @@ class ImageProcessor:
         # 垂直连接公司名称条和原图像
         return cv2.vconcat([company_bar, image])
 
-    from PIL import Image, ImageDraw, ImageFont
     @classmethod
     def process_and_combine_images(cls, results):
         images = []
