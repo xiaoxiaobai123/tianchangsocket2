@@ -22,6 +22,20 @@ class TaskManager:
         else:
             base_dir = os.path.dirname(os.path.abspath(__file__))
         self.capture_output_dir = os.path.join(base_dir, 'captured_images')
+        # 存图配置：config.json 无 capture_images 段时默认关闭(客户现场安全)
+        capture_cfg = {}
+        try:
+            if hasattr(self.config, 'config'):
+                capture_cfg = self.config.config.get('capture_images', {}) or {}
+        except Exception:
+            capture_cfg = {}
+        self.capture_enabled = bool(capture_cfg.get('enabled', False))
+        self.capture_save_raw = bool(capture_cfg.get('save_raw', True))
+        self.capture_save_marked = bool(capture_cfg.get('save_marked', True))
+        self.capture_only_ng = bool(capture_cfg.get('only_ng', False))
+        self.logger.info(f"Capture images: enabled={self.capture_enabled}, "
+                         f"raw={self.capture_save_raw}, marked={self.capture_save_marked}, "
+                         f"only_ng={self.capture_only_ng}")
 
     async def run(self):
         self.logger.info("Task Manager started")
@@ -134,9 +148,14 @@ class TaskManager:
             self.logger.error(f"Failed to capture image for camera {camera_num}")
             return None
 
-        # 保存相机原图
-        timestamp = datetime.now().strftime("%Y%m%d_%H%M%S_%f")[:-3]
-        await asyncio.to_thread(self.save_capture_image, image, camera_num, timestamp, "raw")
+        # 存图开关关闭时完全跳过；only_ng 模式下原图先留在内存，等结果出来再决定
+        timestamp = None
+        raw_image = None
+        if self.capture_enabled:
+            timestamp = datetime.now().strftime("%Y%m%d_%H%M%S_%f")[:-3]
+            raw_image = image
+            if self.capture_save_raw and not self.capture_only_ng:
+                await asyncio.to_thread(self.save_capture_image, raw_image, camera_num, timestamp, "raw")
 
         image = ha.himage_from_numpy_array(image)
         camera_info = self.convert_settings_to_camera_info(settings)
@@ -151,10 +170,16 @@ class TaskManager:
             self.logger.error(f"Unknown product type for camera {camera_num}")
             return None
 
-        # 保存带标注的结果图
-        if result is not None:
-            result_image = result[1]
-            await asyncio.to_thread(self.save_capture_image, result_image, camera_num, timestamp, "marked")
+        # 保存带标注的结果图；only_ng 模式只在结果非OK时补存原图和标注图
+        if self.capture_enabled and result is not None:
+            if self.capture_only_ng:
+                if result[0] != ProcessResult.OK:
+                    if self.capture_save_raw:
+                        await asyncio.to_thread(self.save_capture_image, raw_image, camera_num, timestamp, "raw")
+                    if self.capture_save_marked:
+                        await asyncio.to_thread(self.save_capture_image, result[1], camera_num, timestamp, "marked")
+            elif self.capture_save_marked:
+                await asyncio.to_thread(self.save_capture_image, result[1], camera_num, timestamp, "marked")
 
         return result
 
